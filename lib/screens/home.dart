@@ -36,7 +36,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
       if (status == AnimationStatus.completed) {
         // boxController.reverse();
         boxController.repeat(
-       period: Duration(seconds: 1),
+          period: Duration(seconds: 1),
         );
       }
     });
@@ -57,9 +57,6 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-
-
-
     onTap() {
       if (catController.status == AnimationStatus.completed) {
         catController.reverse();
@@ -78,20 +75,27 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
       appBar: AppBar(
         title: Text('Animation'),
       ),
-      body: Center(
-        child: GestureDetector(
-          onTap: onTap,
-          child: Stack(
-            overflow: Overflow.visible,
-            children: [
-              buildCatAnimation(),
-              buildBox(),
-              buildLeftFlap(),
-              buildRightFlap()
-            ],
+      body: Column(children: <Widget>[
+        Container(
+          padding: EdgeInsets.symmetric(vertical: 50),
+          height: MediaQuery.of(context).size.height * .30,
+          child: Text('Tap the box',style: TextStyle(fontSize: 35),),
+        ),
+        Center(
+          child: GestureDetector(
+            onTap: onTap,
+            child: Stack(
+              overflow: Overflow.visible,
+              children: [
+                buildCatAnimation(),
+                buildBox(),
+                buildLeftFlap(),
+                buildRightFlap()
+              ],
+            ),
           ),
         ),
-      ),
+      ]),
     );
   }
 
